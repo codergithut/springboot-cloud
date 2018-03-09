@@ -1,19 +1,20 @@
 package com.service;
 
 import com.dao.AggregationDao;
-import com.domain.AggreationParam;
-import com.domain.AggreationType;
-import com.domain.IndexParam;
+import com.dao.SaveDataToElasticSearch;
+import com.domain.*;
+import com.domain.entity.EventInfo;
 import com.domain.entity.HotWorld;
 import com.domain.message.HotWordRequest;
-import com.service.bill.GetHotWorld;
+import com.service.bill.dao.HotWorldDao;
+import com.service.bill.servcice.GetHotWorldService;
 import org.apache.lucene.util.automaton.RegExp;
+import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.search.aggregations.Aggregation;
 import org.elasticsearch.search.aggregations.bucket.terms.ParsedStringTerms;
 import org.elasticsearch.search.aggregations.bucket.terms.Terms;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,7 +29,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api")
-public class GetHotWorldByEsImpl implements GetHotWorld {
+public class GetHotWorldByEsImpl implements HotWorldDao {
 
     @Autowired
     AggregationDao aggregationDao;
@@ -73,7 +74,26 @@ public class GetHotWorldByEsImpl implements GetHotWorld {
                 hotWorlds.add(hotWorld);
             }
         }
-
         return hotWorlds;
     }
+
+
+    @Autowired
+    SaveDataToElasticSearch saveDataToElasticSearch;
+
+    @RequestMapping(value = "/test1",method = RequestMethod.GET)
+    public String testElastic() throws IOException {
+        EventInfo eventInfo = new EventInfo();
+        eventInfo.setId("1111");
+        eventInfo.setEvent("测试数据123");
+        IndexParam indexParam = new IndexParam();
+        indexParam.setType("case");
+        indexParam.setIndex("class");
+        ElasticEntityProxy elasticEntityProxy = new ElasticEntityProxy(eventInfo);
+        elasticEntityProxy.setIndex(indexParam);
+        saveDataToElasticSearch.addElasticSearch(elasticEntityProxy);
+        return null;
+    }
+
+
 }

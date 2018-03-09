@@ -3,6 +3,7 @@ package com.controller.bill;
 import com.api.mongo.FeinService;
 import com.domain.entity.User;
 import com.service.GetHotWorldImpl;
+import com.service.bill.servcice.GetHotWorldService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class ServiceController {
     FeinService feinService;
 
     @Autowired
-    GetHotWorldImpl getHotWorld;
+    GetHotWorldService getHotWorldService;
 
     @RequestMapping(value = "/feign",method = RequestMethod.GET)
     public User hello2(@RequestParam String username, @RequestParam Integer age){
@@ -38,7 +39,7 @@ public class ServiceController {
 
     @RequestMapping(value = "elasticsearch", method = RequestMethod.GET)
     public Object elasticSearch() {
-        return getHotWorld.getHotWorld(null);
+        return getHotWorldService.getHotWorldService();
     }
 
 
