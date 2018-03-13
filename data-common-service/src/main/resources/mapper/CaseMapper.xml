@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="common.dao.ICaseDao">
+	<resultMap id="Lawcase" type="com.domain.entity.Lawcase">
+		<id column="lawcase_id" jdbcType="INTEGER" property="lawcaseId" />
+		<result column="lawcase_name" jdbcType="VARCHAR" property="lawcaseName" />
+		<result column="lawcase_type" jdbcType="VARCHAR" property="lawcaseType" />
+		<result column="lawcase_no" jdbcType="VARCHAR" property="lawcaseNo" />
+		<result column="lawcase_uploadUser" jdbcType="VARCHAR"
+				property="lawcaseUploadUser" />
+		<result column="lawcase_sendUser" jdbcType="VARCHAR" property="lawcaseSendUser" />
+		<result column="lawcase_createTime" jdbcType="TIMESTAMP"
+				property="lawcaseCreateTime" />
+		<!-- <result column="lawcase_organization" jdbcType="VARCHAR" property="lawcaseOrganization"
+			/> -->
+		<result column="lawcase_fromZone" jdbcType="VARCHAR" property="lawcaseFromZone" />
+		<result column="org_id" jdbcType="INTEGER" property="orgId" />
+		<result column="casetype_id" jdbcType="INTEGER" property="casetypeId" />
+		<result column="STATE" jdbcType="INTEGER" property="workId" />
+		<result column="lawcase_remark" jdbcType="VARCHAR" property="remark" />
+		<result column="closeCase" jdbcType="INTEGER" property="closeCase" />
+		<result column="secrecy" jdbcType="INTEGER" property="secrecy" />
+	</resultMap>
+	<select id="getAllLawcaseNumber" resultType="Integer">
+		SELECT COUNT(1) FROM lawcase
+	</select>
+	
+	<select id="getIndexLawcaseList" resultMap="Lawcase" parameterType="Map"> 
+		SELECT * FROM lawcase 
+		WHERE lawcase_id IN 
+			(SELECT lawcase_id FROM account_lawcase WHERE account_id = #{accountId,jdbcType=INTEGER} AND state = 1 )
+		ORDER BY lawcase_createTime DESC LIMIT #{limit}
+	</select>
+	
+</mapper>

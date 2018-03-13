@@ -6,6 +6,7 @@ import com.domain.IndexParam;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
 import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.aggregations.bucket.terms.support.IncludeExclude;
@@ -25,7 +26,8 @@ public class AggregationDaoImpl implements AggregationDao {
     RestHighLevelClient restHighLevelClient;
 
     @Override
-    public SearchResponse getAggreationData(IndexParam index, AggreationParam aggreationParam) throws IOException {
+    public SearchResponse getAggreationData(IndexParam index, AggreationParam aggreationParam, QueryBuilder queryBuilder) throws IOException {
+
         SearchRequest searchRequest = new SearchRequest(index.getIndex());
         searchRequest.types(index.getType());
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
@@ -38,7 +40,7 @@ public class AggregationDaoImpl implements AggregationDao {
             searchSourceBuilder.aggregation(aggregation);
         }
 
-        searchSourceBuilder.size(0);
+        searchSourceBuilder.query(queryBuilder).size(0);
         searchRequest.source(searchSourceBuilder);
         SearchResponse searchResponse = restHighLevelClient.search(searchRequest);
         return searchResponse;

@@ -1,4 +1,4 @@
-package mongo;
+package common;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -8,9 +8,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-@MapperScan("mongo.dao")
-public class MongdoService {
+@MapperScan("common.dao")
+public class CommonDataService {
     public static void main(String[] args) {
-        SpringApplication.run(MongdoService.class,args);
+        SpringApplication.run(CommonDataService.class,args);
     }
 }

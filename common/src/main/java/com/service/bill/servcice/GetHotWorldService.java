@@ -1,7 +1,11 @@
 package com.service.bill.servcice;
 
-import com.domain.ResponseMessage;
+import com.domain.entity.HotWorld;
+import com.domain.message.HotWordRequest;
+
+import java.io.IOException;
+import java.util.List;
 
 public interface GetHotWorldService {
-    ResponseMessage getHotWorldService();
+    List<HotWorld> getHotWorld(HotWordRequest hotWordRequest) throws IOException;
 }

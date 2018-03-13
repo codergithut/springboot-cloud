@@ -12,7 +12,7 @@
         <module>service</module>
         <module>common</module>
         <module>login</module>
-        <module>data-mongo</module>
+        <module>data-common-service</module>
         <module>data-elasticsearch</module>
         <module>center</module>
     </modules>

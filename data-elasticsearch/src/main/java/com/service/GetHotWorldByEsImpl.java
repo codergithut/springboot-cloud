@@ -2,15 +2,18 @@ package com.service;
 
 import com.dao.AggregationDao;
 import com.dao.SaveDataToElasticSearch;
-import com.domain.*;
+import com.domain.AggreationParam;
+import com.domain.AggreationType;
+import com.domain.ElasticEntityProxy;
+import com.domain.IndexParam;
 import com.domain.entity.EventInfo;
 import com.domain.entity.HotWorld;
 import com.domain.message.HotWordRequest;
-import com.service.bill.dao.HotWorldDao;
 import com.service.bill.servcice.GetHotWorldService;
 import org.apache.lucene.util.automaton.RegExp;
-import org.elasticsearch.action.index.IndexResponse;
 import org.elasticsearch.action.search.SearchResponse;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.aggregations.Aggregation;
 import org.elasticsearch.search.aggregations.bucket.terms.ParsedStringTerms;
 import org.elasticsearch.search.aggregations.bucket.terms.Terms;
@@ -29,7 +32,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/api")
-public class GetHotWorldByEsImpl implements HotWorldDao {
+public class GetHotWorldByEsImpl implements GetHotWorldService {
 
     @Autowired
     AggregationDao aggregationDao;
@@ -50,6 +53,8 @@ public class GetHotWorldByEsImpl implements HotWorldDao {
         RegExp regExp = new RegExp("[\u4e00-\u9fa5]{begin,end}".replace("begin", hotWordRequest.getBegin()+"")
                 .replace("end", hotWordRequest.getEnd() + ""));
 
+
+
         IndexParam indexParam = new IndexParam();
         indexParam.setIndex("class");
         indexParam.setType("case");
@@ -58,10 +63,15 @@ public class GetHotWorldByEsImpl implements HotWorldDao {
         aggreationParam.setAggreationType(AggreationType.TERMS);
         aggreationParam.setExcludes(null);
         aggreationParam.setIncludes(regExp);
+        if(hotWordRequest != null && hotWordRequest.getExclude() != null) {
+            RegExp exp = new RegExp(hotWordRequest.getExclude());
+            aggreationParam.setExcludes(exp);
+        }
         aggreationParam.setField("event");
         aggreationParam.setSize(hotWordRequest.getSize());
 
-        SearchResponse searchResponse = aggregationDao.getAggreationData(indexParam, aggreationParam);
+        QueryBuilder queryBuilder = QueryBuilders.termQuery("event", "这张电梯上的照片 被暖");
+        SearchResponse searchResponse = aggregationDao.getAggreationData(indexParam, aggreationParam, queryBuilder);
         Map<String, Aggregation> aggregations = searchResponse.getAggregations().asMap();
         for (Map.Entry<String, Aggregation> entry : aggregations.entrySet()) {
             Aggregation agg = entry.getValue();

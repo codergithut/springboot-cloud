@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="common.dao.ISuspectDao">
+
+	<resultMap id="Suspect" type="com.domain.entity.Suspect">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="sex" jdbcType="VARCHAR" property="sex" />
+		<result column="lawcase_id" jdbcType="INTEGER" property="lawcaseId" />
+		<result column="mobile" jdbcType="VARCHAR" property="mobile" />
+		<result column="id_number" jdbcType="VARCHAR" property="idNumber" />
+		<result column="bank_card" jdbcType="VARCHAR" property="bankCard" />
+		<result column="origin" jdbcType="VARCHAR" property="origin" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+
+
+		<result column="marry" jdbcType="VARCHAR" property="marry" />
+		<result column="duty" jdbcType="VARCHAR" property="duty" />
+		<result column="work_trip" jdbcType="VARCHAR" property="work_trip" />
+		<result column="work_time" jdbcType="VARCHAR" property="work_time" />
+		<result column="salary" jdbcType="VARCHAR" property="salary" />
+
+
+		<result column="nation" jdbcType="VARCHAR" property="nation" />
+		<result column="race" jdbcType="VARCHAR" property="race" />
+		<result column="address" jdbcType="VARCHAR" property="address" />
+		<result column="post" jdbcType="VARCHAR" property="post" />
+		<result column="state" jdbcType="VARCHAR" property="state" />
+
+		<result column="education" jdbcType="VARCHAR" property="education" />
+		<result column="escuage" jdbcType="VARCHAR" property="escuage" />
+		<result column="workplace" jdbcType="VARCHAR" property="workplace" />
+		<result column="identity" jdbcType="VARCHAR" property="identity" />
+		<result column="alias" jdbcType="VARCHAR" property="alias" />
+
+		<result column="crime_type_id" jdbcType="INTEGER" property="crimeTypeId" />
+		<result column="account_id" jdbcType="INTEGER" property="accountId" />
+		<result column="crimetypename" jdbcType="VARCHAR" property="crimeTypeName" />
+
+		<result column="odps_time" jdbcType="TIMESTAMP" property="odpsTime" />
+		<result column="person_flag" jdbcType="INTEGER" property="personFlag" />
+		<result column="hotel_flag" jdbcType="INTEGER" property="hotelFlag" />
+		<result column="flight_flag" jdbcType="INTEGER" property="flightFlag" />
+		<result column="train_flag" jdbcType="INTEGER" property="trainFlag" />
+		<result column="internet_flag" jdbcType="INTEGER" property="internetFlag" />
+		<result column="mobileInfo_flag" jdbcType="INTEGER" property="mobileInfoFlag" />
+		<result column="suspect_remark" jdbcType="VARCHAR" property="suspectRemark" />
+
+		<result column="duowei_flag" jdbcType="INTEGER" property="duoweiFlag" />
+		<result column="hailiang_flag" jdbcType="INTEGER" property="hailiangFlag" />
+
+
+		<result column="model_result" jdbcType="VARCHAR" property="modelResult" />
+
+		<result column="orgName" jdbcType="VARCHAR" property="orgName" />
+		<result column="lawcaseName" jdbcType="VARCHAR" property="lawcaseName" />
+
+
+
+		<result column="model_point_drugs" jdbcType="INTEGER" property="modelPointDrugs" />
+		<result column="model_point_stael" jdbcType="INTEGER" property="modelPointStael" />
+
+		<result column="packId" jdbcType="INTEGER" property="packId" />
+		<result column="source" jdbcType="VARCHAR" property="source" />
+		<result column="relation" jdbcType="VARCHAR" property="relation" />
+		<result column="number" jdbcType="VARCHAR" property="number" />
+
+		<result column="mac" jdbcType="VARCHAR" property="mac" />
+		<result column="imsi" jdbcType="VARCHAR" property="imsi" />
+		<result column="imeiEsnMeid" jdbcType="VARCHAR" property="imeiEsnMeid" />
+		<result column="bluetoothMac" jdbcType="VARCHAR" property="bluetoothMac" />
+
+
+
+		<result column="broadBand" jdbcType="VARCHAR" property="broadBand" />
+		<result column="criminalRecord" jdbcType="VARCHAR" property="criminalRecord" />
+		<result column="carryBankCard" jdbcType="VARCHAR" property="carryBankCard" />
+		<result column="foothold" jdbcType="VARCHAR" property="foothold" />
+		<result column="lifeHobby" jdbcType="VARCHAR" property="lifeHobby" />
+		<result column="consumptiveHabit" jdbcType="VARCHAR" property="consumptiveHabit" />
+		<result column="mobileUsage" jdbcType="VARCHAR" property="mobileUsage" />
+		<result column="networkBehavior" jdbcType="VARCHAR" property="networkBehavior" />
+		<result column="caseSpaceTime" jdbcType="VARCHAR" property="caseSpaceTime" />
+		<result column="mobileAndCaseRelation" jdbcType="VARCHAR" property="mobileAndCaseRelation" />
+		<result column="vehicle" jdbcType="VARCHAR" property="vehicle" />
+		<result column="selectTime" jdbcType="VARCHAR" property="selectTime" />
+		<result column="crimeOperandi" jdbcType="VARCHAR" property="crimeOperandi" />
+		<result column="selectTarget" jdbcType="VARCHAR" property="selectTarget" />
+		<result column="selectTool" jdbcType="VARCHAR" property="selectTool" />
+		<result column="crimeToolSource" jdbcType="VARCHAR" property="crimeToolSource" />
+		<result column="crossRegion" jdbcType="VARCHAR" property="crossRegion" />
+		<result column="partnerCase" jdbcType="VARCHAR" property="partnerCase" />
+		<result column="commitInCrime" jdbcType="VARCHAR" property="commitInCrime" />
+		<result column="cant" jdbcType="VARCHAR" property="cant" />
+		<result column="escapeCode" jdbcType="VARCHAR" property="escapeCode" />
+		<result column="stayAfterCase" jdbcType="VARCHAR" property="stayAfterCase" />
+		<result column="disposalMode" jdbcType="VARCHAR" property="disposalMode" />
+		<result column="disposalTime" jdbcType="VARCHAR" property="disposalTime" />
+
+
+		<result column="model_flag" jdbcType="INTEGER" property="modelFlag" />
+
+		<result column="txl_flag" jdbcType="INTEGER" property="txlFlag" />
+		<result column="thjl_flag" jdbcType="INTEGER" property="thjlFlag" />
+		<result column="dx_flag" jdbcType="INTEGER" property="dxFlag" />
+		<result column="qq_flag" jdbcType="INTEGER" property="qqFlag" />
+		<result column="wx_flag" jdbcType="INTEGER" property="wxFlag" />
+	</resultMap>
+
+	<select id="getAllSuspectNumber" resultType="Integer">
+		SELECT COUNT(1) FROM suspect
+	</select>
+
+	<select id="getOrganizationBySuspect" parameterType="Integer" resultType="String">
+		SELECT org_name FROM organization t1
+		LEFT JOIN account t2
+		ON t1.org_id = t2.org_id
+		LEFT JOIN suspect t3
+		ON t3.account_id = t2.account_id
+		WHERE t3.id = #{suspectId,jdbcType=INTEGER}
+	</select>
+
+</mapper>

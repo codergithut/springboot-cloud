@@ -12,16 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class GetHotWorldImpl implements GetHotWorldService {
+public class GetHotWorldClient {
 
     @Autowired
     ElasticSearchService elasticSearchService;
 
-    @Override
     public ResponseMessage getHotWorldService() {
         ResponseMessage responseMessage = new ResponseMessage();
         List<HotWorld> hotWorlds = new ArrayList<HotWorld>();
-        //将elasticsearch获取的数据获得
         List<HotWorld> worlds = elasticSearchService.getHotWorld();
         hotWorlds.addAll(worlds);
         //todo: 可能需到其他地方获取数据，比如mongodb等等，反正就是其他数据

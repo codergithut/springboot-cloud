@@ -2,11 +2,25 @@ package com.domain.message;
 
 public class HotWordRequest {
 
+    /**
+     * 汉字最小长度
+     */
     private int begin;
 
+    /**
+     * 汉字最大长度
+     */
     private int end;
 
+    /**
+     * 热词个数
+     */
     private int size;
+
+    /**
+     * 需要排除的词多个词用|隔开
+     */
+    private String exclude;
 
     public int getBegin() {
         return begin;
@@ -30,5 +44,13 @@ public class HotWordRequest {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    public String getExclude() {
+        return exclude;
+    }
+
+    public void setExclude(String exclude) {
+        this.exclude = exclude;
     }
 }

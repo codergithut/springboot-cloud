@@ -71,4 +71,19 @@ public class ResponseMessage {
     public void setData(Object data) {
         this.data = data;
     }
+
+    public ResponseMessage(int code, boolean result, Date date) {
+        this.code = code;
+        this.result = result;
+        this.date = date;
+    }
+
+    public ResponseMessage() {
+    }
+
+    public static ResponseMessage getOkResponseMessage() {
+        return new ResponseMessage(200, true, new Date());
+    }
+
+
 }
