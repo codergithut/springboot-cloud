@@ -17,5 +17,7 @@ public interface ICaseDao {
 	
 	List<Lawcase> getIndexLawcaseList(Map<String, Object> map);
 
+	List<Integer> getCaseTypeByDeviceId(String pack_id);
+
 
 }

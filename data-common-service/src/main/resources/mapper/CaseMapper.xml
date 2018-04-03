@@ -31,5 +31,15 @@
 			(SELECT lawcase_id FROM account_lawcase WHERE account_id = #{accountId,jdbcType=INTEGER} AND state = 1 )
 		ORDER BY lawcase_createTime DESC LIMIT #{limit}
 	</select>
+
+	<select id="getCaseTypeByDeviceId" resultType="Integer" parameterType="String">
+		SELECT distinct l.casetype_id
+		from lawcase l
+		LEFT JOIN lawcase_suspect ls on l.lawcase_id=ls.lawcase_id
+		WHERE l.casetype_id is NOT null
+		and ls.suspect_id IN(
+		SELECT DISTINCT suspect_id from pack where pack_id=#{deviceId}
+		)
+	</select>
 	
 </mapper>

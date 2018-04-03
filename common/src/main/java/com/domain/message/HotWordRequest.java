@@ -18,6 +18,11 @@ public class HotWordRequest {
     private int size;
 
     /**
+     * 犯罪类型
+     */
+    private String caseType;
+
+    /**
      * 需要排除的词多个词用|隔开
      */
     private String exclude;
@@ -52,5 +57,13 @@ public class HotWordRequest {
 
     public void setExclude(String exclude) {
         this.exclude = exclude;
+    }
+
+    public String getCaseType() {
+        return caseType;
+    }
+
+    public void setCaseType(String caseType) {
+        this.caseType = caseType;
     }
 }

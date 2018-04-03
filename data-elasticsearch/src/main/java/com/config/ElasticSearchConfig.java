@@ -17,10 +17,14 @@ public class ElasticSearchConfig {
 
     @Bean
     public RestHighLevelClient getRestHighLevelClient() {
-        RestClient restClient = RestClient.builder(
-                new HttpHost(elasticSearchParam.getHost(), elasticSearchParam.getHttpPort(), ConstantParam.ELASTICSEARCH_SCHEME)).build();
         RestHighLevelClient client =
-                new RestHighLevelClient(restClient);
+                new RestHighLevelClient(getRestClient());
         return client;
+    }
+
+    @Bean
+    public RestClient getRestClient() {
+        return RestClient.builder(
+                new HttpHost(elasticSearchParam.getHost(), elasticSearchParam.getHttpPort(), ConstantParam.ELASTICSEARCH_SCHEME)).build();
     }
 }

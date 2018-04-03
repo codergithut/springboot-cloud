@@ -25,6 +25,22 @@ public class AggregationDaoImpl implements AggregationDao {
     @Autowired
     RestHighLevelClient restHighLevelClient;
 
+    public AggregationDaoImpl() {
+    }
+
+    public AggregationDaoImpl(RestHighLevelClient restHighLevelClient) {
+        this.restHighLevelClient = restHighLevelClient;
+    }
+
+
+    /**
+     *
+     * @param index 统计的索引信息
+     * @param aggreationParam 统计参数
+     * @param queryBuilder 统计查询条件
+     * @return
+     * @throws IOException
+     */
     @Override
     public SearchResponse getAggreationData(IndexParam index, AggreationParam aggreationParam, QueryBuilder queryBuilder) throws IOException {
 

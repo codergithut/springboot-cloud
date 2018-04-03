@@ -9,9 +9,7 @@ import common.dao.IPackDao;
 import common.dao.ISuspectDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -154,6 +152,33 @@ public class IndexServiceImpl implements IndexService {
 	        result.add(subResult);
 		}
 		return result;
+	}
+
+	@RequestMapping(value = "/xx",method = RequestMethod.POST)
+	public String test(String deviceID){
+//		boolean flag = true;
+//		double d = 0 ;
+//		Date date = new Date();
+//		while(d <10000) {
+//			d++;
+//			List<Integer> das = caseDao.getCaseTypeByDeviceId(deviceID);
+//			System.out.println(d);
+//		}
+//		Date date1 = new Date();
+//		System.out.println(date1.compareTo(date));
+//		return (date1.compareTo(date)/10000) + "";
+
+
+		return null;
+
+
+
+		//List<Integer> das = caseDao.getCaseTypeByDeviceId(deviceID);
+//		if(das.size() > 0) {
+//			return das.toString();
+//		} else {
+//			return null;
+//		}
 	}
 
 

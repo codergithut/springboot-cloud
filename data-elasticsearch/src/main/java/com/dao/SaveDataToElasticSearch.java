@@ -17,6 +17,17 @@ public class SaveDataToElasticSearch {
     @Autowired
     RestHighLevelClient client;
 
+    public SaveDataToElasticSearch() {
+    }
+
+    public SaveDataToElasticSearch(RestHighLevelClient client) {
+        this.client = client;
+    }
+
+    /**
+     * @param elasticEntityProxy 需要添加es服务的数据
+     * @throws IOException
+     */
     public void addElasticSearch(ElasticEntityProxy elasticEntityProxy) throws IOException {
         IndexParam indexParam = elasticEntityProxy.getIndex();
         IndexRequest request = new IndexRequest(

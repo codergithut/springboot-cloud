@@ -3,6 +3,10 @@ package com.domain;
 import com.alibaba.fastjson.JSON;
 import com.domain.entity.GetMainId;
 
+/**
+ * elasticsearch 数据模型
+ * @param <T>
+ */
 public class ElasticEntityProxy<T extends GetMainId>{
 
     T proxyEntry;

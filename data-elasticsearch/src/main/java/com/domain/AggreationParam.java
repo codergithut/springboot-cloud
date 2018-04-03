@@ -4,14 +4,29 @@ import org.apache.lucene.util.automaton.RegExp;
 
 public class AggreationParam {
 
+    /**
+     * 查询包含的正则式
+     */
     private RegExp includes;
 
+    /**
+     * 需要排除的正则式
+     */
     private RegExp excludes;
 
+    /**
+     * 统计类型
+     */
     private AggreationType AggreationType;
 
+    /**
+     * 需要统计的类型，现在是event字段
+     */
     private String field;
 
+    /**
+     * 需要返回数据的大小
+     */
     private int size;
 
     public RegExp getIncludes() {
