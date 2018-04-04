@@ -6,9 +6,11 @@ public enum AggreationType {
      *  常见聚合统计
      */
     TERMS("terms", 1), AVERAGE("average", 2), SUM("sum", 3), MAX("max", 4), MIN("min", 5);
+
     // 成员变量
     private String name;
     private int index;
+
     // 构造方法
     private AggreationType(String name, int index) {
         this.name = name;
@@ -23,7 +25,7 @@ public enum AggreationType {
         }
         return null;
     }
-    // get set 方法
+
     public String getName() {
         return name;
     }

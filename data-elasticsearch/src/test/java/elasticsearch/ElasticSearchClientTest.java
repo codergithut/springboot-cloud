@@ -41,7 +41,7 @@ public class ElasticSearchClientTest {
     @Before
     public void initData() {
         RestClient restClient = RestClient.builder(
-                new HttpHost("192.168.2.11", 9200, ConstantParam.ELASTICSEARCH_SCHEME)).build();
+                new HttpHost("127.0.0.1", 9200, ConstantParam.ELASTICSEARCH_SCHEME)).build();
         commonDataToElasticSearch = new CommonDataToElasticSearch(restClient);
 
         RestHighLevelClient client =
@@ -52,6 +52,7 @@ public class ElasticSearchClientTest {
 
     }
 
+    @Test
     public void addEsData() throws IOException {
         EventInfo eventInfo = new EventInfo();
         eventInfo.setId("1");
@@ -161,6 +162,4 @@ public class ElasticSearchClientTest {
             System.out.println(hot.getWorld());
         }
     }
-
-
 }
