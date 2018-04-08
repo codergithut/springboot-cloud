@@ -33,7 +33,7 @@ public class RestTemplateTest {
         params.add("caseType", "72");
         HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(params, headers);
         //HotWorld[] obs = restTemplate.getForObject("http://127.0.0.1:8081/api/hotWorld?begin=1&end=6&size=10&caseType=72", HotWorld[].class, param);
-        Object obs1 = restTemplate.postForObject("http://127.0.0.1:8081/api/hotWorld", requestEntity, HotWorld.class);
+        HotWorld[] obs1 = restTemplate.postForObject("http://127.0.0.1:8081/api/hotWorld", requestEntity, HotWorld[].class);
         System.out.println("");
 //        System.out.println(obs.length);
     }
