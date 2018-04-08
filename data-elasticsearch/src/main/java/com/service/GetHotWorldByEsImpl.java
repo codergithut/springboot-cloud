@@ -53,7 +53,7 @@ public class GetHotWorldByEsImpl implements GetHotWorldService {
     CaseTypeSensitiveRepository caseTypeSensitiveRepository;
 
     @Override
-    @RequestMapping(value = "/hotWorld",method = RequestMethod.GET)
+    @RequestMapping(value = "/hotWorld",method = RequestMethod.POST)
     public List<HotWorld> getHotWorld(
             HotWordRequest hotWordRequest
     ) throws IOException {
@@ -113,6 +113,11 @@ public class GetHotWorldByEsImpl implements GetHotWorldService {
             packTypeRepository.save(packType);
         }
         return packTypes;
+    }
+
+    @RequestMapping(value = "/update1",method = RequestMethod.GET)
+    public String test() throws IOException {
+        return "ss";
     }
 
     private boolean updateDataEs(PackType packType) throws IOException {
